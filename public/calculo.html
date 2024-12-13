@@ -57,32 +57,52 @@ button:hover {
 
     <div class="result1" id="result1"></div>
 
+    <!--Calculadora semestral-->
+    <h1>Calcular cuánto necesitas para aprobar el semestre</h1>
+
+    <label for="mes1">Calificación del primer mes:</label>
+    <input type="number" id="mes1" placeholder="Ej. 8.5" step="0.1">
+    <br>
+
+    <label for="mes2">Calificación del segundo mes:</label>
+    <input type="number" id="mes2" placeholder="Ej. 9.0" step="0.1">
+    <br>
+
+    <label for="ideal">Calificación que quieres tener en el semestre:</label>
+    <input type="number" id="ideal" placeholder="Ej. 6.0" step="0.1">
+    <br>
+
+    <button onclick="calideal()">Calcular</button>
+
+<div class="calideal" id="calideal"></div>
+
+
+
     <script>
-        function calculateRequiredExamScore() {
-            const actual1 = parseFloat(document.getElementById("actual1").value);
-            const objetivo = parseFloat(document.getElementById("objetivo").value);
+        function calideal() {
+    // Obtener valores de los campos de entrada
+    const mes1 = parseFloat(document.getElementById("mes1").value);
+    const mes2 = parseFloat(document.getElementById("mes2").value);
+    const ideal = parseFloat(document.getElementById("ideal").value);
 
-            // Verificamos si ambos campos tienen un valor válido
-            if (isNaN(actual1) || isNaN(objetivo)) {
-                document.getElementById("result").innerText = "Por favor ingresa ambas calificaciones correctamente.";
-                return;
-            }
+    // Verificar si los valores ingresados son válidos
+    if (isNaN(mes1) || isNaN(mes2) || isNaN(ideal)) {
+        document.getElementById("calideal").innerText = "Por favor ingresa todas las calificaciones correctamente.";
+        return;
+    }
 
-            // El 75% de la calificación ya está determinado
-            const examen = actual1 * 0.75;
+    // Calcular lo necesario en el tercer mes
+    const necesario = (ideal * 3) - (mes1 + mes2);
 
-            // Calculamos la calificación necesaria en el examen para alcanzar la meta
-            const minimo = (objetivo - examen) / 0.25;
-            const resultado = examen + (examen * 0.25);
-
-            if (minimo > 10) {
-                document.getElementById("result").innerText = `No puedes alcanzar esa calificación, lo máximo que puedes tener es ${resultado.toFixed(2)}, pero solo si sacas 10 en el examen.`;
-            } else if (minimo <= 0) {
-                document.getElementById("result").innerText = `Nada de qué preocuparse, aunque saques 0, alcanzas ${objetivo}.`;
-            } else {
-                document.getElementById("result").innerText = `Necesitas sacar al menos ${minimo.toFixed(2)} en el examen para tener ${objetivo} en el mes.`;
-            }
-        }
+    // Verificar si es posible alcanzar la calificación ideal
+    if (necesario > 10) {
+        document.getElementById("calideal").innerText = `No es posible alcanzar la calificación ideal de ${ideal}. Necesitarías más de 10 en el tercer mes.`;
+    } else if (necesario < 0) {
+        document.getElementById("calideal").innerText = `Ya has alcanzado la calificación ideal de ${ideal}.`;
+    } else {
+        document.getElementById("calideal").innerText = `Necesitas un ${necesario.toFixed(2)} como mínimo en el tercer mes para tener ${ideal} en el semestre.`;
+    }
+}
 
         function calculateRequiredExamScore1() {
             const actual2 = parseFloat(document.getElementById("actual2").value);

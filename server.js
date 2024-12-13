@@ -2,6 +2,10 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const path = require('path')
+require('dotenv').config();  // Carga las variables del archivo .env
+
+const gmailApiKey = process.env.GMAIL_API_KEY;
+
 
 const app = express();
 const port = 3000;
@@ -19,7 +23,7 @@ const transporter = nodemailer.createTransport({
   service: 'gmail', // Usando Gmail como ejemplo
   auth: {
     user: 'adamvery007@gmail.com', // Tu correo de Gmail
-    pass: 'dbsu bznl wbrb cjlm', // Tu contraseña de Gmail o un App Password (para seguridad)
+    pass: process.env.GMAIL_API_KEY // Tu contraseña de Gmail o un App Password (para seguridad)
   },
 });
 

@@ -1,0 +1,168 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+
+}
+
+nav {
+    background-color: #f8f8f8;
+    padding: 20px;
+    align-items: center;
+    display:flex;
+}
+
+#a {
+    cursor:pointer;
+    color: #27e287;
+    font-size: 1.5rem;
+    font-weight:bold;
+    margin-right:auto;
+}
+
+
+
+nav ul {
+    align-items: center;
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    
+    
+}
+
+nav ul li {
+    margin: 0 15px;
+
+}
+
+nav ul li a {
+    text-decoration: none;
+    color:#333;
+    font-weight:bold;
+}
+
+nav ul li a:hover{
+    color:#494949;
+}
+
+main {
+    padding: 20px;
+   
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.intro h1 {
+    color: #27e287;
+    font-size: 2rem;
+}
+
+button {
+    background-color: #27e287;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #1cbf6a;
+    padding: 11px 21px;
+}
+
+.features h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.feature-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.feature {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    margin-left:0;
+}
+
+.feature:hover{
+    width:310px;
+}
+
+.feature h3 {
+    color: #27e287;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    color: #666;
+}
+
+.feature img{
+    width:100%;
+    height:auto;
+    object-fit: cover;
+}
+
+.minimos{
+    background-color: #f8f8f8;
+    padding: 20px;
+    display:flex;
+    align-items: center;
+    text-align: justify;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width:800px;
+    margin-left:70px;
+}
+
+.aminimos{
+    padding: 20px;
+    text-align: right; /* Alinea el texto a la derecha */
+    margin-right: 0%;
+    width:500px;
+    margin-top:-280px;
+   
+}
+
+.minimos h2{
+    color:#10a35c;
+}
+
+.bminimos p{
+    color:#666;
+}
+.bminimos{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color:#27e287;
+}
+
+#prueba{
+    background-color: #27e287;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    outline: none;
+    display: inline-block;
+}

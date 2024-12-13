@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+   
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f9;
+}
+input, button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+}
+button {
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+button:hover {
+    background-color: #45a049;
+}
+.result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+</style>
+<body>
+    <h1><a href="index.html">Regresar a pagina principal.</a></h1>
+    <h1>Calcular cuánto necesitas sacar en el examen para alcanzar cierta calificación en el mes.</h1>
+    <label for="actual1">Calificación Actual (de este mes):</label>
+    <input type="number" id="actual1" placeholder="Ej. 8.5" step="0.1">
+    <br>
+    <label for="objetivo">Calificación que quieres sacar en el mes:</label>
+    <input type="number" id="objetivo" placeholder="Ej. 9.0" step="0.1">
+    <br>
+    <button onclick="calculateRequiredExamScore()">Calcular</button>
+
+    <div class="result" id="result"></div>
+
+    <!-- Segunda calculadora -->
+    <h1>Calcular cuánto sube/baja tu calificación, si sacas x en el examen.</h1>
+    <label for="actual2">Calificación Actual (de este mes):</label>
+    <input type="number" id="actual2" placeholder="Ej. 8.5" step="0.1">
+    <br>
+    <label for="excal">¿Qué pasa si saco esto en el examen?</label>
+    <input type="number" id="excal" placeholder="Ej. 9.0" step="0.1">
+    <br>
+    <button onclick="calculateRequiredExamScore1()">Calcular</button>
+
+    <div class="result1" id="result1"></div>
+
+    <script>
+        function calculateRequiredExamScore() {
+            const actual1 = parseFloat(document.getElementById("actual1").value);
+            const objetivo = parseFloat(document.getElementById("objetivo").value);
+
+            // Verificamos si ambos campos tienen un valor válido
+            if (isNaN(actual1) || isNaN(objetivo)) {
+                document.getElementById("result").innerText = "Por favor ingresa ambas calificaciones correctamente.";
+                return;
+            }
+
+            // El 75% de la calificación ya está determinado
+            const examen = actual1 * 0.75;
+
+            // Calculamos la calificación necesaria en el examen para alcanzar la meta
+            const minimo = (objetivo - examen) / 0.25;
+            const resultado = examen + (examen * 0.25);
+
+            if (minimo > 10) {
+                document.getElementById("result").innerText = `No puedes alcanzar esa calificación, lo máximo que puedes tener es ${resultado.toFixed(2)}, pero solo si sacas 10 en el examen.`;
+            } else if (minimo <= 0) {
+                document.getElementById("result").innerText = `Nada de qué preocuparse, aunque saques 0, alcanzas ${objetivo}.`;
+            } else {
+                document.getElementById("result").innerText = `Necesitas sacar al menos ${minimo.toFixed(2)} en el examen para tener ${objetivo} en el mes.`;
+            }
+        }
+
+        function calculateRequiredExamScore1() {
+            const actual2 = parseFloat(document.getElementById("actual2").value);
+            const excal = parseFloat(document.getElementById("excal").value);
+
+            // Verificamos si ambos campos tienen un valor válido
+            if (isNaN(actual2) || isNaN(excal)) {
+                document.getElementById("result1").innerText = "Por favor ingresa ambas calificaciones correctamente.";
+                return;
+            }
+
+            // El 75% de la calificación ya está determinado
+            const examen = actual2 * 0.75;
+            const aporte = excal * 0.25;
+            const nueva = examen + aporte;
+
+            document.getElementById("result1").innerText = `Si sacas ${excal} en el examen, vas a sacar ${nueva.toFixed(2)} en el mes.`;
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Contacto</title>
+</head>
+<body>
+  <h1><a href="index.html">Regresar a la pagina principal.</a></h1>
+  <h2>Recomendaciones y sugerencias.</h2>
+  <form id="contactForm" action="/send-email" method="POST">
+    <label for="message">Mensaje:</label><br>
+    <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script>
+    // Puedes agregar JavaScript aquí si quieres manejar la respuesta sin recargar la página (AJAX)
+  </script>
+</body>
+</html>
